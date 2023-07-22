@@ -18,7 +18,7 @@ class Parser
     logger.collect { Validator.validate_date_of_manufacture(date_of_manufacture: vehicle.date_of_manufacture) }
 
     begin
-      raise ValidationError, logger.output_error_bullet_points unless logger.errors.empty?
+      raise ValidationError, logger.output_error_list unless logger.errors.empty?
 
       @valid_vehicles << vehicle
       @total_valid += 1

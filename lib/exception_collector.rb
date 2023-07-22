@@ -9,7 +9,7 @@ class ExceptionCollector
     @errors ||= []
   end
 
-  def output_error_bullet_points
+  def output_error_list
     "\n    - #{@errors.join("\n    - ")}"
   end
 end
