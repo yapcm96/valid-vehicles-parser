@@ -1,5 +1,5 @@
 require_relative 'validator.rb'
-require_relative 'validation_error.rb'
+require_relative 'exceptions.rb'
 require_relative 'constants.rb'
 
 class Parser
@@ -14,7 +14,7 @@ class Parser
       Validator.validate_vrn(vrn: vehicle.vrn)
       Validator.validate_make(make: vehicle.make)
       Validator.validate_colour(colour: vehicle.colour)
-      # Validator.validate_date_of_manufacture(date_of_manufacture: vehicle.date_of_manufacture)
+      Validator.validate_date_of_manufacture(date_of_manufacture: vehicle.date_of_manufacture)
 
       @valid_vehicles << vehicle
       @total_valid += 1
