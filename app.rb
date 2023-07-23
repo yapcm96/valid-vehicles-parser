@@ -16,7 +16,5 @@ new_vehicles = dataset.collect { |row| Vehicle.new *row}
 
 parser = Parser.new
 puts '--- Begin parsing dataset ---'
-parser.parse_all(vehicles: new_vehicles)
+parser.validate_and_map_all_to_csv(vehicles: new_vehicles)
 puts '--- Parsing process complete ---'
-# parser.generate_report
-

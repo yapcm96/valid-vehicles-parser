@@ -19,8 +19,10 @@ module Validator
 
   def self.validate_date_of_manufacture(date_of_manufacture:)
     begin
+      # Validates format of date
       raise InvalidDateFormat unless date_of_manufacture.match(/^[\d]{1,2}[\/-][\d]{1,2}[\/-][\d]{4}$/)
 
+      # Validates date is in valid range i.e. 1900 to current date
       template = if date_of_manufacture.match(/^[\d]{1,2}\/[\d]{1,2}\/[\d]{4}$/)
                    '%d/%m/%Y'
                  else

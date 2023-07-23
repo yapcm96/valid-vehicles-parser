@@ -7,4 +7,36 @@ class Vehicle
     @colour = colour
     @date_of_manufacture = date_of_manufacture
   end
+
+  def mapped_vrn
+    transformed_vrn = @vrn.upcase
+
+    # Insert whitespace before the 4th character in the VRN if non-existing
+    unless transformed_vrn[4].match(/\s/)
+      @vrn.upcase.insert(4, "\s")
+    end
+
+    transformed_vrn
+  end
+
+  def mapped_make
+    if ABRV_VALID_MAKE.any? { |s| s.to_s.casecmp(@make) == 0 }
+      @make.upcase
+    else
+      @make.capitalize
+    end
+  end
+
+  def mapped_colour
+    @colour.capitalize
+  end
+
+  def mapped_date_of_manufacture
+    template = if @date_of_manufacture.match(/^[\d]{1,2}\/[\d]{1,2}\/[\d]{4}$/)
+                 '%d/%m/%Y'
+               else
+                 '%d-%m-%Y'
+               end
+    Date.strptime(@date_of_manufacture, template).strftime('%a, %d %B %Y')
+  end
 end

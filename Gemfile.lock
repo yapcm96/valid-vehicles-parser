@@ -54,7 +54,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activemodel
   date_validator
   pry (~> 0.13.1)
   rubocop

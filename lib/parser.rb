@@ -5,12 +5,23 @@ require_relative 'exception_collector.rb'
 
 class Parser
   def initialize
-    @valid_vehicles = []
     @total_valid = 0
     @total_invalid = 0
   end
 
-  def parse(vehicle:)
+  def validate_and_map_all_to_csv(vehicles:)
+    CSV.open('./lib/assets/parsed_vehicles.csv', 'w') do |csv|
+      # Write the header row
+      csv << ['VRN', 'Make', 'Colour', 'Date of Manufacture']
+
+      vehicles.select do |vehicle|
+        # If validation passes, write each vehicle as a row in the CSV file
+        csv << map_to_csv(vehicle:) if validate_vehicle(vehicle:)
+      end
+    end
+  end
+
+  def validate_vehicle(vehicle:)
     logger = ExceptionCollector.new
     logger.collect { Validator.validate_vrn(vrn: vehicle.vrn) }
     logger.collect { Validator.validate_make(make: vehicle.make) }
@@ -20,17 +31,18 @@ class Parser
     begin
       raise ValidationError, logger.output_error_list unless logger.errors.empty?
 
-      @valid_vehicles << vehicle
       @total_valid += 1
-      puts "Vehicle with VRN of '#{vehicle.vrn}' has been successfully stored"
+      puts "Vehicle with VRN of '#{vehicle.vrn}' has been successfully validated"
+      true
     rescue ValidationError => e
       # Vehicle which failed the parser validation and cannot be stored is displayed and the program continues
-      puts "Failed to store vehicle with VRN of '#{vehicle.vrn}':#{e}"
       @total_invalid += 1
+      puts "Failed to validate vehicle with VRN of '#{vehicle.vrn}':#{e}"
+      false
     end
   end
 
-  def parse_all(vehicles:)
-    vehicles.select { |vehicle| parse(vehicle:) }
+  def map_to_csv(vehicle:)
+    [vehicle.mapped_vrn, vehicle.mapped_make, vehicle.mapped_colour, vehicle.mapped_date_of_manufacture]
   end
 end
