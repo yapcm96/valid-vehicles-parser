@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ABRV_VALID_MAKE = %i[bmw vw].freeze
 NON_ABRV_VALID_MAKE = %i[audi mercedes].freeze
 VALID_MAKE = ABRV_VALID_MAKE.dup.append(*NON_ABRV_VALID_MAKE).freeze

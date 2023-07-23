@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'validator'
 require_relative 'exceptions'
 require_relative 'constants'

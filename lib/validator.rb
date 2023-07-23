@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Validator
   def self.validate_vrn(vrn:)
     return if vrn.match(/^[a-zA-Z]{2}\d{2}\s?[a-zA-Z]{3}$/)

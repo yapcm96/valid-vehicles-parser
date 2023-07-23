@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Vehicle
   attr_reader :vrn, :make, :colour, :date_of_manufacture
 
@@ -17,7 +19,7 @@ class Vehicle
   end
 
   def mapped_make
-    if ABRV_VALID_MAKE.any? { |s| s.to_s.casecmp(@make) == 0 }
+    if ABRV_VALID_MAKE.any? { |s| s.to_s.casecmp(@make).zero? }
       @make.upcase
     else
       @make.capitalize

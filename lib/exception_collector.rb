@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ExceptionCollector
   def collect
     yield
