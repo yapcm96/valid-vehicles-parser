@@ -22,14 +22,17 @@ module Validator
       # Validates format of date
       raise InvalidDateFormat unless date_of_manufacture.match(/^[\d]{1,2}[\/-][\d]{1,2}[\/-][\d]{4}$/)
 
-      # Validates date is in valid range i.e. 1900 to current date
+      # Choose template for parsing date string into date object
       template = if date_of_manufacture.match(/^[\d]{1,2}\/[\d]{1,2}\/[\d]{4}$/)
                    '%d/%m/%Y'
                  else
                    '%d-%m-%Y'
                  end
 
+      # Parse date string into date object
       parsed_date = Date.strptime(date_of_manufacture, template)
+
+      # Validates date object is in valid range i.e. 1900 to current date
       raise InvalidDateRange unless parsed_date >= Date.new(1900, 1, 1) && parsed_date <= Date.today
 
     rescue InvalidDateFormat, InvalidDateRange
