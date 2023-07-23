@@ -13,7 +13,6 @@ class Vehicle
 
     # Insert whitespace before the 4th character in the VRN if non-existing
     transformed_vrn.insert(4, "\s") unless transformed_vrn[4].match(/\s/)
-
     transformed_vrn
   end
 

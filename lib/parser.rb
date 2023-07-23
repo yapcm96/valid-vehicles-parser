@@ -9,20 +9,6 @@ class Parser
     @total_invalid = 0
   end
 
-  def validate_and_map_all_to_csv(vehicles:)
-    @total_vehicles = vehicles.size
-
-    CSV.open('./lib/assets/parsed_vehicles.csv', 'w') do |csv|
-      # Write the header row
-      csv << ['VRN', 'Make', 'Colour', 'Date of Manufacture']
-
-      vehicles.select do |vehicle|
-        # If validation passes, write each vehicle as a row in the CSV file
-        csv << map_to_csv(vehicle:) if validate_vehicle(vehicle:)
-      end
-    end
-  end
-
   def validate_vehicle(vehicle:)
     logger = ExceptionCollector.new
     logger.collect { Validator.validate_vrn(vrn: vehicle.vrn) }
@@ -44,12 +30,12 @@ class Parser
     end
   end
 
-  def map_to_csv(vehicle:)
+  def map_vehicle_to_csv(vehicle:)
     [vehicle.mapped_vrn, vehicle.mapped_make, vehicle.mapped_colour, vehicle.mapped_date_of_manufacture]
   end
 
   def print_statistic
-    puts "Total vehicles parsed: #{@total_vehicles}"
+    puts "Total vehicles parsed: #{@total_valid + @total_invalid}"
     puts "Total valid vehicles: #{@total_valid}"
     puts "Total invalid vehicles: #{@total_invalid}"
   end
