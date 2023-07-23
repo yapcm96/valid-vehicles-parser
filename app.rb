@@ -18,3 +18,4 @@ parser = Parser.new
 puts '--- Begin parsing dataset ---'
 parser.validate_and_map_all_to_csv(vehicles: new_vehicles)
 puts '--- Parsing process complete ---'
+parser.print_statistic

@@ -10,6 +10,8 @@ class Parser
   end
 
   def validate_and_map_all_to_csv(vehicles:)
+    @total_vehicles = vehicles.size
+
     CSV.open('./lib/assets/parsed_vehicles.csv', 'w') do |csv|
       # Write the header row
       csv << ['VRN', 'Make', 'Colour', 'Date of Manufacture']
@@ -44,5 +46,11 @@ class Parser
 
   def map_to_csv(vehicle:)
     [vehicle.mapped_vrn, vehicle.mapped_make, vehicle.mapped_colour, vehicle.mapped_date_of_manufacture]
+  end
+
+  def print_statistic
+    puts "Total vehicles parsed: #{@total_vehicles}"
+    puts "Total valid vehicles: #{@total_valid}"
+    puts "Total invalid vehicles: #{@total_invalid}"
   end
 end
