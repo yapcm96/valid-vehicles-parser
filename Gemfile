@@ -2,7 +2,6 @@
 
 source 'https://rubygems.org'
 
-gem 'date_validator'
-gem 'pry', '~> 0.13'
-gem 'rubocop'
+gem 'pry', '~> 0.14'
+gem 'rubocop', '~> 1.54'
 gem 'simple_symbolize', '~> 3.0'
