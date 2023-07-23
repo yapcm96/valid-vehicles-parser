@@ -29,7 +29,7 @@ class Vehicle
   end
 
   def mapped_date_of_manufacture
-    template = if @date_of_manufacture.match(/^[\d]{1,2}\/[\d]{1,2}\/[\d]{4}$/)
+    template = if @date_of_manufacture.match(%r{^\d{1,2}/\d{1,2}/\d{4}$})
                  '%d/%m/%Y'
                else
                  '%d-%m-%Y'

@@ -5,8 +5,8 @@ require 'csv'
 require 'json'
 require 'pry'
 require 'simple_symbolize'
-require_relative './lib/parser.rb'
-require_relative './lib/vehicle.rb'
+require_relative './lib/parser'
+require_relative './lib/vehicle'
 
 SimpleSymbolize.translate { |trans| trans.handle_camel_case = false }
 

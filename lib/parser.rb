@@ -1,7 +1,7 @@
-require_relative 'validator.rb'
-require_relative 'exceptions.rb'
-require_relative 'constants.rb'
-require_relative 'exception_collector.rb'
+require_relative 'validator'
+require_relative 'exceptions'
+require_relative 'constants'
+require_relative 'exception_collector'
 
 class Parser
   def initialize

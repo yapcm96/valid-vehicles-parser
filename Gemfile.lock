@@ -55,7 +55,7 @@ PLATFORMS
 
 DEPENDENCIES
   date_validator
-  pry (~> 0.13.1)
+  pry (~> 0.13)
   rubocop
   simple_symbolize (~> 3.0)
 
