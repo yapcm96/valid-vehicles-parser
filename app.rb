@@ -18,10 +18,10 @@ puts '--- Begin parsing dataset ---'
 
 # Creates a new CSV file
 CSV.open('./lib/assets/parsed_vehicles.csv', 'w') do |csv|
-  # Write the header row
+  # Writes the header row
   csv << ['VRN', 'Make', 'Colour', 'Date of Manufacture']
 
-  # Iterate through the sample vehicles dataset
+  # Iterates through the sample vehicles dataset
   dataset.collect do |row|
     # Creates vehicle object from row in the sample vehicles dataset
     vehicle = Vehicle.new(*row)

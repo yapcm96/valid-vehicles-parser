@@ -1,6 +1,8 @@
 # Valid Vehicles Parser
 
-This project simulates a simple parser that parses a CSV file containing vehicles with properties of `vrn`, `make`, `colour` and `dateOfManufacture` and stores the vehicles in a proper format in a new CSV file.
+This project simulates a simple parser that parses a CSV file containing vehicles with properties of `vrn`, `make`, `colour` and `dateOfManufacture`.
+
+Vehicles that have passed validation on all properties are then stored in a proper format in a new CSV file.
 
 ## Running the project
 
