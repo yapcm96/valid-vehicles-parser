@@ -12,14 +12,14 @@ module Validator
     return if VALID_MAKE.include? make.symbolize
 
     raise ValidationError.new,
-          "Vehicle has make of '#{make}' which is not part of the parser's accepted vehicle makes (i.e. one of #{VALID_MAKE_STR})."
+          "Vehicle has make of '#{make}' which is not part of the parser's accepted vehicle makes (i.e. one of #{VALID_MAKE_STR}, and case is insensitive)."
   end
 
   def self.validate_colour(colour:)
     return if VALID_COLOUR.include? colour.symbolize
 
     raise ValidationError.new,
-          "Vehicle has colour of '#{colour}' which is not part of the parser's accepted vehicle colours (i.e. one of #{VALID_COLOUR_STR})."
+          "Vehicle has colour of '#{colour}' which is not part of the parser's accepted vehicle colours (i.e. one of #{VALID_COLOUR_STR}, and case is insenstive)."
   end
 
   def self.validate_date_of_manufacture(date_of_manufacture:)
