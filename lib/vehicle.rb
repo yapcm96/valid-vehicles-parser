@@ -13,7 +13,7 @@ class Vehicle
   def mapped_vrn
     transformed_vrn = @vrn.upcase
 
-    # Insert whitespace before the 4th character in the VRN if non-existing
+    # Insert whitespace before the 4th index in the array of characters in the VRN if non-existing
     transformed_vrn.insert(4, "\s") unless transformed_vrn[4].match(/\s/)
     transformed_vrn
   end
